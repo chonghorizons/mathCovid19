@@ -429,6 +429,36 @@ function t(Storage) {
     }
 }
 
+ // SAMPLE CODE 
+// * Copy the above code into node.js, and then run the code below.
+// NOTE: This simulation takes about 60 seconds to run.
+
+//  console.log(PopulationInitial);
+
+// GLOBALquarantineCompliance=0.0;
+// PodQuarantine=false;
+// ContactTraceBack=false;
+// ContactTraceForward=false;
+// var Storage1= [];
+// InitializeEverything0({
+// 				  	atRisk: false,
+// 					exposuresPerWeek: 80,
+// 					distancingCompliance: 0.5, 
+// 					quarantineCompliance: 0.0,
+// 					podIntegrity: 0.0,
+// 					noHandwash: 1.0,
+// 				});
+// // Run 30 rounds
+// for (var i=0; i<30; i++) {
+// 	t(Storage1);
+// }
+
+// var Run1PodArray=PodArray;
+
+// // sample person
+// PodArray[0][0];
+
+
 
 
 
