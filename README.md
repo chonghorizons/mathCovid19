@@ -1,8 +1,7 @@
 # mathCovid19
 
-I'm lazy, so I just interactively load up a devtools console and run everything in the browser console.
 
-Projects:
+2 epidemiological modeling Projects for coronavirus, Covid19, covid-19:
 
 ## math_batchtest.js
 WRITEUP OF IDEA: Secret #1 on http://tinyurl.com/batchPods
@@ -13,7 +12,9 @@ Also, see https://www.pcr-pooling.com/
 
 * How to run:  Just copy the code into javascript console. Or `node ./math_batchtest.js`
 
-## Leaky Locakdown
+## Leaky Lockdown
+WRITEUP OF IDEA: Secret #2 on http://tinyurl.com/batchPods
+
 Two files:
 
 - leakylockdown.js // simulation engine
@@ -53,5 +54,16 @@ Sorry, there isn't a ton of documentation about all the parameters. The best way
 // // sample person
 // PodArray[0][0];
 ```
+
+
+#### Notes
+I'm lazy so I just run everything in the chrome console so I can interactively interact. You can fork and modify so everything is imported and modular.
+
+Next steps:
+
+- [ ] Simple visualization, maybe 1,000,000 dots on a screen of a 1000x1000 png image.
+- [ ] make code more modular.
+- [ ] better documentation
+- [ ] Implement discrete distribution of parameters and also non iid (correlation between parameters)
 
 
