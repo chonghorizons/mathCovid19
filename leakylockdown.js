@@ -6,7 +6,7 @@
 
 const PopulationInitial = {
 	"main" : 1e6,
-	"infected": 50,  // randomly distributed amongst all people.
+	"infected": 500,  // randomly distributed amongst all people.
 	"hospital" :  0,  // The Bureau of Labor Statistics estimates that there were 5.15M people employed in the Hospitals Industry Group in 2018.  Scale to US population
 	"recovered" : 0, // these have herd immunity
 	"dead" : 0,
@@ -16,61 +16,61 @@ const PodSize=20; // the initial unexposed group is partitioned into mutually ex
 var numberPods = PopulationInitial.main/PodSize;
 console.log(numberPods);
 
-const ExposureDistribution = [
- { "percent": 10, "exposuresPerWeek": 10, "name": "lowContact"},
- { "percent": 75, "exposuresPerWeek": 50, "name": "mediumContact"},
- { "percent": 14, "exposuresPerWeek": 100, "name": "highContact"},
- { "percent": 1, "exposuresPerWeek": 1000, "name": "superhighContact"}
-];
+// const ExposureDistribution = [
+//  { "percent": 10, "exposuresPerWeek": 10, "name": "lowContact"},
+//  { "percent": 75, "exposuresPerWeek": 50, "name": "mediumContact"},
+//  { "percent": 14, "exposuresPerWeek": 100, "name": "highContact"},
+//  { "percent": 1, "exposuresPerWeek": 1000, "name": "superhighContact"}
+// ];
 
-var populationAverageExposure= ExposureDistribution.reduce((acc,current)=>acc+(current.percent*current.exposuresPerWeek),0)/100;
-console.log(populationAverageExposure);
+// var populationAverageExposure= ExposureDistribution.reduce((acc,current)=>acc+(current.percent*current.exposuresPerWeek),0)/100;
+// console.log(populationAverageExposure);
 
 const asymptomaticProportion= 0.25;
 
 // const TransmissionPerExposureNoCompliance=0.05;
 const TransmissionPerExposureNoCompliance=0.05;
 
-const DistancingComplianceLevels= {
-	none: 0, 
-	lax: 0.5,
-	strict: 0.9,
-	veryStrict: 0.99,
-	perfect: 1.00
-}
+// const DistancingComplianceLevels= {
+// 	none: 0, 
+// 	lax: 0.5,
+// 	strict: 0.9,
+// 	veryStrict: 0.99,
+// 	perfect: 1.00
+// }
 
-const noHandwashLevels= {
-	none: 1, 
-	lax: 0.5,
-	strict: 0.1,
-	veryStrict: 0.01,
-	perfect: 0
-}
+// const noHandwashLevels= {
+// 	none: 1, 
+// 	lax: 0.5,
+// 	strict: 0.1,
+// 	veryStrict: 0.01,
+// 	perfect: 0
+// }
 
-const DistancingComplianceDistributionConditionalOnExposure = {
-   lowContact : [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
-   mediumContact : [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
-   highContact: [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
-   superhighContact : [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
-}
-
-
-const PodIntegrityDistribution= [
- { "percent": 0, "inPodProportion": 0.0, "name": "none"},
- { "percent": 10, "inPodProportion": 0.5, "name": "externalInterfacer"},
- { "percent": 75, "inPodProportion": 0.8, "name": "podLoose"},
- { "percent": 14, "inPodProportion": 0.9, "name": "podTight"},
- { "percent": 1, "inPodProportion": 1.0, "name": "podOnly"}
-]
+// const DistancingComplianceDistributionConditionalOnExposure = {
+//    lowContact : [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
+//    mediumContact : [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
+//    highContact: [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
+//    superhighContact : [ {none: 0}, {lax: 0.5}, {strict: 0.5}, {veryStrict: 0}, {perfect: 0} ],
+// }
 
 
-const QuarantineComplianceLevels= {
-	none: 0, 
-	lax: 0.5,
-	strict: 0.9,
-	veryStrict: 0.99,
-	perfect: 1.00
-}
+// const PodIntegrityDistribution= [
+//  { "percent": 0, "inPodProportion": 0.0, "name": "none"},
+//  { "percent": 10, "inPodProportion": 0.5, "name": "externalInterfacer"},
+//  { "percent": 75, "inPodProportion": 0.8, "name": "podLoose"},
+//  { "percent": 14, "inPodProportion": 0.9, "name": "podTight"},
+//  { "percent": 1, "inPodProportion": 1.0, "name": "podOnly"}
+// ]
+
+
+// const QuarantineComplianceLevels= {
+// 	none: 0, 
+// 	lax: 0.5,
+// 	strict: 0.9,
+// 	veryStrict: 0.99,
+// 	perfect: 1.00
+// }
 
 const AtRiskPercentage = 0.1; // 10%
 const AtRiskDistancingComplianceOverride = "strict";  // none means don't override.
@@ -78,10 +78,10 @@ const AtRiskPodIntegrityOverride =  "none"
   // "none" means AtRisk have podIntegrity from the same distribution. Don't override. If a name is given, then they have that
   // inPodProportion.
 
-const FatalityRates= {
-	atRisk: 0.10, 
-	normal: 0.01
-}
+// const FatalityRates= {
+// 	atRisk: 0.10, 
+// 	normal: 0.01
+// }
 
 
 // *** PSEUDOCODE
@@ -115,6 +115,9 @@ var Week2InfectionsArray=[];
 var RecoveredArray=[];
 var DeadArray=[];
 var QuarantinesArray=[];
+var NewQArray=[];
+var Week1QArray=[];
+var Week2QArray=[];
 var currentWeek=0;
 
 
@@ -126,6 +129,9 @@ function InitializeEverything0(fixedCharacteristics) {
 	RecoveredArray=[];
 	DeadArray=[];
 	QuarantinesArray=[];
+	NewQArray=[];
+	Week1QArray=[];
+	Week2QArray=[];
 	var p;
 	for (p = 0; p < numberPods; p++) {
 		var i;
@@ -326,11 +332,13 @@ function quarantineFlags(options) {
 				if (initiateQuarantine) {
 					x.infection.quarantine = true
 					QuarantinesArray.push(x);
+					NewQArray.push(x);
 				}
 				if (options.podQuarantine && initiateQuarantine) {
 					PodArray[x.pod].forEach((person) =>{
 						person.infection.quarantine = true;
 						QuarantinesArray.push(person);
+						NewQArray.push(person)
 					})
 				}
 			}
@@ -340,6 +348,7 @@ function quarantineFlags(options) {
 				personTraced = PodArray[infectorPod][infectorIndexInPod]
 				personTraced.infection.quarantine = true;
 				QuarantinesArray.push(personTraced);
+				NewQArray.push(personTraced)
 			}
 		});
 		// contactTraceForward is ignored because if you are quarantined, then you don't infect anyone forward.
@@ -357,6 +366,13 @@ function TimeStep() {
 	NewInfectionsArray=[];
 	Week1InfectionsArray.forEach(exposuresInfections);
 	Week2InfectionsArray.forEach(exposuresInfections);
+
+	Week2QArray.forEach((person) => {
+		person.infection.quarantine = null; // or dead, do dead later.
+	})
+	Week2QArray=Week1QArray;
+	Week1QArray=NewQArray;
+	NewQArray=[];
 	quarantineFlags({
 		proportion: GLOBALquarantineCompliance,
 		symptomatic: true,
@@ -364,6 +380,7 @@ function TimeStep() {
 		contactTraceForward: ContactTraceForward,
 		podQuarantine: PodQuarantine,
 	});
+
 }
 //    Iterate the weekly time step.
 //		NEW INFECTIONS
@@ -384,7 +401,8 @@ function s() {
 	console.log('week1: ' + Week1InfectionsArray.length); 
 	console.log('week2: ' + Week2InfectionsArray.length); 
 	console.log('ThisWeek R0: ' + NewInfectionsArray.length/(Week1InfectionsArray.length + Week2InfectionsArray.length))
-	console.log('Quarantined': QuarantinesArray.length)
+	console.log('Quarantined (wk1+wk2): ' + Number(Week2QArray.length +  Week1QArray.length));
+	console.log('QuarantineRatio: '+ (Week2QArray.length + Week1QArray.length) /(Week1InfectionsArray.length + Week2InfectionsArray.length))
 	console.log('recoverd:' + RecoveredArray.length);
 	console.log('===========');
 }
@@ -404,7 +422,7 @@ function t(Storage) {
 			newInfections: NewInfectionsArray.length,
 			week1Infections: Week1InfectionsArray.length,
 			week2Infections: Week2InfectionsArray.length,
-			r0: NewInfectionsArray.length/(Week1InfectionsArray.length + Week2InfectionsArray.length),
+			r0: Math.round(NewInfectionsArray.length/(Week1InfectionsArray.length + Week2InfectionsArray.length) *100)/100 ,
 	 		Recovered: RecoveredArray.length,
 	 		Quarantined:  QuarantinesArray.length,
   	  })

@@ -45,7 +45,10 @@ PodArray[0][0];
 var Run2PodArray=PodArray;
 
 
-
+GLOBALquarantineCompliance=0.0;
+PodQuarantine=false;
+ContactTraceBack=false;
+ContactTraceForward=false;
 var Storage3= [];
 InitializeEverything0({
 				  	atRisk: false,
@@ -87,3 +90,27 @@ for (var i=0; i<20; i++) {
 PodArray[0][0];
 var Run4PodArray=PodArray;
 
+
+
+
+GLOBALquarantineCompliance=0.5;
+PodQuarantine=true;
+ContactTraceBack=true;
+ContactTraceForward=true;
+var Storage5= [];
+InitializeEverything0({
+				  	atRisk: false,
+					exposuresPerWeek: 20,
+					distancingCompliance: 0.5, 
+					quarantineCompliance: 0.5,
+					podIntegrity: 0.8,
+					noHandwash: 1.0,
+				});
+// Run 20 rounds
+for (var i=0; i<20; i++) {
+	t(Storage5);
+}
+
+// sample person
+PodArray[0][0];
+var Run5PodArray=PodArray;
