@@ -15,6 +15,8 @@ Also, see https://www.pcr-pooling.com/
 ## Leaky Lockdown
 WRITEUP OF IDEA: Secret #2 on http://tinyurl.com/batchPods
 
+![Imgur](https://i.imgur.com/hm7mjNi.png)
+
 ![Watch the leaky lockdown video on youtube](http://img.youtube.com/vi/4tG5ATWNtbQ/0.jpg)
 
 https://youtu.be/4tG5ATWNtbQ
