@@ -15,7 +15,18 @@ Also, see https://www.pcr-pooling.com/
 ## Leaky Lockdown
 WRITEUP OF IDEA: Secret #2 on http://tinyurl.com/batchPods
 
-Two files:
+![Watch the leaky lockdown video on youtube](http://img.youtube.com/vi/4tG5ATWNtbQ/0.jpg)](https://www.youtube.com/watch?v=4tG5ATWNtbQ "leaky lockdown")
+
+https://youtu.be/4tG5ATWNtbQ
+
+How to run the leaky lockdown model.
+1. Clone this repo.
+2. open the `visualization2000.html` file. (NOTE: It will take about 1-2 minutes to run. You can watch the progress with DeveloperTools -> Console.
+3. Click RUN then NEXT like in the video. Everything runs in the browser.
+
+You have to change the parameters by changing the code. I will make these editable later.
+
+Two main files for the simulation:
 
 - leakylockdown.js // simulation engine
 - simulation.js // separate file with some simulations I've run.
