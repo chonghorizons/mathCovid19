@@ -4,6 +4,8 @@ GLOBALquarantineCompliance=0.0;
 PodQuarantine=false;
 ContactTraceBack=false;
 ContactTraceForward=false;
+
+
 var Storage1= [];
 InitializeEverything0({
 				  	atRisk: false,
@@ -18,9 +20,7 @@ for (var i=0; i<30; i++) {
 	t(Storage1);
 }
 
-// sample person
-PodArray[0][0];
-var Run1PodArray=PodArray;
+
 
 
 //////////
@@ -40,9 +40,6 @@ for (var i=0; i<20; i++) {
 	t(Storage2);
 }
 
-// sample person
-PodArray[0][0];
-var Run2PodArray=PodArray;
 
 
 GLOBALquarantineCompliance=0.0;
@@ -63,9 +60,7 @@ for (var i=0; i<20; i++) {
 	t(Storage3);
 }
 
-// sample person
-PodArray[0][0];
-var Run3PodArray=PodArray;
+
 
 
 GLOBALquarantineCompliance=1.0;
@@ -86,9 +81,6 @@ for (var i=0; i<20; i++) {
 	t(Storage4);
 }
 
-// sample person
-PodArray[0][0];
-var Run4PodArray=PodArray;
 
 
 
@@ -111,6 +103,3 @@ for (var i=0; i<20; i++) {
 	t(Storage5);
 }
 
-// sample person
-PodArray[0][0];
-var Run5PodArray=PodArray;

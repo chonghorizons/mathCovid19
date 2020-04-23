@@ -4,6 +4,9 @@
 // The key addition is a "detection pod" analogy.
 // There should also be three sectors:  unexposed sector, hospital sector, and recovered sector (herd immunity)
 
+console.log("checkLodash")
+console.log(_);
+
 const PopulationInitial = {
 	"main" : 1e6,
 	"infected": 500,  // randomly distributed amongst all people.
@@ -273,7 +276,7 @@ function exposuresInfections(infectorPerson) {
 	// console.log("exposing for " + infectorPerson.pod + "---" + infectorPerson.indexInPod );
 	if (infectorPerson.infection.status === "infected" && infectorPerson.infection.quarantine!==true ) {
 		let n;
-		let exposuresWithDistancing= Math.floor(infectorPerson.fixedCharacteristics.exposuresPerWeek*infectorPerson.fixedCharacteristics.distancingCompliance); 
+		let exposuresWithDistancing= Math.floor(infectorPerson.fixedCharacteristics.exposuresPerWeek*(1-infectorPerson.fixedCharacteristics.distancingCompliance)); 
 		for (n=0; n<exposuresWithDistancing; n++) {
 			// console.log("n is " + n  + " for " + infectorPerson.pod + "---" + infectorPerson.indexInPod);
 //  			draw if inPod or out-of pod.
@@ -425,6 +428,7 @@ function t(Storage) {
 			r0: Math.round(NewInfectionsArray.length/(Week1InfectionsArray.length + Week2InfectionsArray.length) *100)/100 ,
 	 		Recovered: RecoveredArray.length,
 	 		Quarantined:  QuarantinesArray.length,
+	 		PodArray: _.cloneDeep(PodArray),
   	  })
     }
 }
@@ -460,5 +464,26 @@ function t(Storage) {
 
 
 
+
+GLOBALquarantineCompliance=0;
+PodQuarantine=false;
+ContactTraceBack=false;
+ContactTraceForward=false;
+var Storage5= [];
+InitializeEverything0({
+				  	atRisk: false,
+					exposuresPerWeek: 100,
+					distancingCompliance: 0, 
+					quarantineCompliance: 0,
+					podIntegrity: 1.0,
+					noHandwash: 1.0,
+				});
+// Run 20 rounds
+for (var i=0; i<10; i++) {
+	t(Storage5);
+}
+
+// sample person
+PodArray[0][0];
 
 
