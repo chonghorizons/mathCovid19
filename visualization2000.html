@@ -1,0 +1,84 @@
+<html>
+<head>
+  <link rel="stylesheet" href="visualization.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<h1>Leaky Lockdown Demo</h1>
+<p>100,000 people, with 5 infected people to start. They are organized in 50 "pods" which can be thought of as states/cities. Each pod is 2000 people.</p>
+
+<ol>
+	<li>The sickness lasts for 2 weeks. </li>
+	<li>Each day, each infected person (who isn't quarantined) is in contact with 30 people <div style="display:none;">(exposures per week)</div>. </li>
+	<li> However, depending on the distancing compliance (rec?) and handwashing (infector?), the contact may not result in an "exposure". In this scenario, there is noHandwash=1.0 and distancingCompliance=0.</li>
+	<li> If exposed, there is a 5% change of getting infected.	If infected, there is a 25% asymptomatic rate.</li>
+	<li> When they are infected, if they are SYMPTOMATIC, there is a 50% chance they are quarantined.
+	<li> There is also "pod quarantining" at 1%. What this means is that each person who is symptomatic in a pod has 1% chance of causing the </i>whole</i> pod to go into pod quarantining. If there are 50 symptomatic people, this will be a 50% chance of pod quarantine. </li>
+	<li>If one is quarantined, there is no chance of infection.</li> <br>
+
+	<li> A person can infect others in week 1 and week 2.
+	<li> Everyone who is "recovered" after week 2 cannot be re-infected.
+	<li> There are no deaths in this model run, simply because you can just randomly pick 2 or 3% who die.	
+
+</ol>
+<code>
+GLOBALquarantineCompliance=0.5; \n
+PodQuarantineProbability=0.01; \n
+ContactTraceBack=false; \n
+ContactTraceForward=false; \n
+var Storage21= []; \n
+InitializeEverything0({ \n
+				  	atRisk: false, \n
+					exposuresPerWeek: 30, \n
+					distancingCompliance: 0, \n
+					quarantineCompliance: 0, \n
+					podIntegrity: 0.9, \n
+					noHandwash: 1.0, \n
+				}); \n
+// Run 40 rounds \n
+</code>
+		<section>
+			<h2>Select Demo</h2>
+		
+				<div id="run1" class="demo">
+					Run
+				</div>
+				<div id="next" class="demo">
+					Next
+				</div>
+
+
+				<div>
+					<input type="number" id="week" name="week"
+       min="0" max="100" value="0">
+				</div>
+				<div id="colorSquares" class="demo">
+					colorSquares
+				</div>
+			
+			
+			<div class="clearfix"></div>
+
+			<h3 id="demo-name"></h3>
+			<p id="demo-event"></p>
+		</section>
+
+		<canvas id="canvas" width="1000" height="600"></canvas>
+
+
+		<section>
+			<h2>Legend</h2>
+
+
+			<h3 id="legend"></h3>
+		<section>
+
+		<canvas id="canvas2" width="1000" height="40">
+
+
+</body>
+  <script src="leakylockdownPod2000_population100000.js"></script>
+  <script src="visualizationPod2000_population100000.js"></script>
+</html>	
