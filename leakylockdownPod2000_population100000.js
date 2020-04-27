@@ -7,6 +7,13 @@
 console.log("checkLodash")
 console.log(_);
 
+
+
+var ContactTraceBack;
+var ContactTraceForward;
+var PodQuarantineProbability;
+
+
 const PopulationInitial = {
 	"main" : 1e5,
 	"infected": 5,  // randomly distributed amongst all people.
@@ -17,7 +24,7 @@ const PopulationInitial = {
 
 const PodSize=2000; // the initial unexposed group is partitioned into mutually exclusive sets of this size.
 var numberPods = PopulationInitial.main/PodSize;
-console.log(numberPods);
+
 
 // const ExposureDistribution = [
 //  { "percent": 10, "exposuresPerWeek": 10, "name": "lowContact"},
@@ -103,7 +110,7 @@ const AtRiskPodIntegrityOverride =  "none"
 
 
 
-
+// model/PodArray
 const PodArray= Array.from(
 	{length: numberPods},
 	() => Array.from(
@@ -112,6 +119,8 @@ const PodArray= Array.from(
 		)
 	);
 
+
+//initialize
 var NewInfectionsArray=[];
 var Week1InfectionsArray=[];
 var Week2InfectionsArray=[];
@@ -123,7 +132,7 @@ var Week1QArray=[];
 var Week2QArray=[];
 var currentWeek=0;
 
-
+//initialize
 function InitializeEverything0(fixedCharacteristics) {
 	currentWeek=0;
 	NewInfectionsArray=[];
@@ -217,12 +226,13 @@ function InitializeEverything0(fixedCharacteristics) {
 //   }
 // }
 
-
+//helper
 function RandomInt(myNumber) {
 	// returns int between 0 and myNumber-1
 	return Math.floor(Math.random()*myNumber)
 }
 
+//helper
 function getRandomPerson(parameters) {
 	if (parameters.Spec == "none") {
 		// find a random pod
@@ -238,6 +248,7 @@ function getRandomPerson(parameters) {
 	}
 	if (parameters.Spec == "outOfPod") {
 		// Get the requesters pod
+		let notMyPod= RandomInt(myNumber)
 		parameters.requester.pod;
 
 		// find a random person not in this pod
@@ -271,7 +282,7 @@ function getRandomPerson(parameters) {
 // Step 1: Iterate through all the exposures of the infected people. Exposures here are 1 way to avoid double counting. 1 ways means they possibly sneeze on them.
 //  	to generate an exposure: 
 
-
+//timeStep
 function exposuresInfections(infectorPerson) {
 	// console.log("exposing for " + infectorPerson.pod + "---" + infectorPerson.indexInPod );
 	if (infectorPerson.infection.status === "infected" && infectorPerson.infection.quarantine!==true ) {
@@ -292,6 +303,8 @@ function exposuresInfections(infectorPerson) {
 	}
 }
 
+
+//timeStep
 function maybeInfect(person, infector) {
 	// console.log("maybe infect" + + person.pod + "---" + person.indexInPod);
 	if (person.infection.status== "clean" && person.infection.quarantine != true ) {
@@ -324,6 +337,7 @@ function maybeInfect(person, infector) {
 
 // Step 2: Now we have all the infected people this week. 
 
+//timeStep
 function quarantineFlags(options) {
 	// search who everyone who is NewlyInfected
 	if (options.proportion==0) {
@@ -358,6 +372,7 @@ function quarantineFlags(options) {
 	}
 };
 
+//timeStep
 function TimeStep() {
 	currentWeek=currentWeek+1;
 	Week2InfectionsArray.forEach((person) => {
@@ -397,7 +412,7 @@ function TimeStep() {
 //  Repeat Step 1 and Step 2 for the number of weeks we are interested in. 
 
 
-
+//timeStep
 function s() {
 	console.log('SUMMARY WEEK: '+ currentWeek);
 	console.log('new  :' + NewInfectionsArray.length); 
@@ -412,10 +427,8 @@ function s() {
 
 
 
-var ContactTraceBack;
-var ContactTraceForward;
-var PodQuarantineProbability;
 
+// eventually move tomethod for model/Summary; currently in timeStep
 function t(Storage) {
 	TimeStep();
     s();
@@ -428,7 +441,7 @@ function t(Storage) {
 			r0: Math.round(NewInfectionsArray.length/(Week1InfectionsArray.length + Week2InfectionsArray.length) *100)/100 ,
 	 		Recovered: RecoveredArray.length,
 	 		Quarantined:  QuarantinesArray.length,
-	 		PodArray: _.cloneDeep(PodArray),
+	 		PodArray: _.cloneDeep(PodArray),  // TODO: 
   	  })
     }
 }
@@ -463,27 +476,5 @@ function t(Storage) {
 // PodArray[0][0];
 
 
-
-
-GLOBALquarantineCompliance=0.5;
-PodQuarantineProbability=0.01;
-ContactTraceBack=false;
-ContactTraceForward=false;
-var Storage21= [];
-InitializeEverything0({
-				  	atRisk: false,
-					exposuresPerWeek: 30,
-					distancingCompliance: 0, 
-					quarantineCompliance: 0,
-					podIntegrity: 0.9,
-					noHandwash: 1.0,
-				});
-// Run 40 rounds
-for (var i=0; i<100; i++) {
-	t(Storage21);
-}
-
-// sample person
-PodArray[0][0];
 
 
