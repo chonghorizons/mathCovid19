@@ -66,6 +66,11 @@ $('#run1').on('click', function() {
 	MyCanvasObj = new run1();
 
 
+
+
+
+
+//draw legend.. hard coded (need to refactor, low priority)
 let rgbArray = [
  			[180,50,0], 
  			[0,150,150],
@@ -90,10 +95,10 @@ let rgbArray = [
 	})
 
 
-	legend.innerHTML = 'INFECTED qa , qs.   a,   s,   NOTINFECTED    q.    RECOVERED '
+	legend.innerHTML = 'INFECTED qurantined aaysmptomatic , qs.   a,   s,   NOTINFECTED    quar.    RECOVERED '
+	
 
 	states.run1 = true;
-	
 	MyCanvasObj.init();
 
 
