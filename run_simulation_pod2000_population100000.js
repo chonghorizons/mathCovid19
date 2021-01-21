@@ -14,7 +14,7 @@ InitializeEverything0({
 					noHandwash: 1.0,
 				});
 // Run 40 rounds
-for (var i=0; i<100; i++) {
+for (var i=0; i<30; i++) {
 	t(Storage21);
 }
 

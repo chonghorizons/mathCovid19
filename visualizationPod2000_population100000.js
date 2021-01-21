@@ -30,20 +30,6 @@ let states = {
 demoEvent.innerHTML = '';
 
 
-$('#colorSquares').on('click', function() {
-	demoName.innerHTML = '';
-	demoName.innerHTML = 'ColorSuqares';
-
-	demoEvent.innerHTML = '';
-	demoEvent.innerHTML = '<strong>Description:</strong> Non-animated and not too exciting. Produces a simple pattern of randomly colored squares. Every time "Color Squares" button is clicked, you get a new grid of colors.';
-
-	MyCanvasObj =  new colorSquares();
-
-	states.colorSquares = true;
-	
-	MyCanvasObj.init();
-});
-
 $('#run1').on('click', function() {
 	demoName.innerHTML = '';
 	demoName.innerHTML = 'Run';
