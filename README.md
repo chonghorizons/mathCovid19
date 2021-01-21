@@ -21,6 +21,9 @@ WRITEUP OF IDEA: Secret #2 on http://tinyurl.com/batchPods
 
 https://youtu.be/4tG5ATWNtbQ
 
+View hosted page:
+* Go to https://chonghorizons.github.io/visualization.html
+
 How to run the leaky lockdown model.
 1. Clone this repo.
 2. open the `visualization2000.html` file. (NOTE: It will take about 1-2 minutes to run. You can watch the progress with DeveloperTools -> Console.
